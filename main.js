@@ -181,9 +181,8 @@ class ThumbnailsComponent {
     constructor(ipServer) {
         this.ipServer = ipServer;
         this.activeIndex = 0;
-        this.dataIMG = [{}];
         this.Url = 'https://gist.githubusercontent.com/DZuz14/56b7f363e9787fb4c0240eb145bc2b9f/raw/e0b67d18352704d155929b7e27e0dae08cc383b6/data.json';
-        this.ipServer.getJson(this.Url).toPromise().then(res => this.dataIMG = res).then(res => console.log(res));
+        this.ipServer.getJson(this.Url).toPromise().then(res => this.dataIMG = res.thumbnails).then(res => console.log(res));
     }
     renderActiveImage(id) {
         this.activeIndex = id;
@@ -214,12 +213,12 @@ ThumbnailsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.dataIMG && (ctx.dataIMG == null ? null : ctx.dataIMG.thumbnails[ctx.activeIndex] == null ? null : ctx.dataIMG.thumbnails[ctx.activeIndex].imgUrl), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("alt", ctx.dataIMG && (ctx.dataIMG == null ? null : ctx.dataIMG.thumbnails[ctx.activeIndex].title));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.dataIMG && (ctx.dataIMG[ctx.activeIndex] == null ? null : ctx.dataIMG[ctx.activeIndex].imgUrl), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("alt", ctx.dataIMG && ctx.dataIMG[ctx.activeIndex].title);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.dataIMG.thumbnails[ctx.activeIndex].bodyText, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.dataIMG && (ctx.dataIMG[ctx.activeIndex] == null ? null : ctx.dataIMG[ctx.activeIndex].bodyText), " ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.dataIMG.thumbnails);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.dataIMG);
     } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"]], styles: ["*[_ngcontent-%COMP%] {\r\n  box-sizing: border-box;\r\n  font-family: 'Roboto', sans-serif;\r\n}\r\n\r\nhtml[_ngcontent-%COMP%], body[_ngcontent-%COMP%], .app[_ngcontent-%COMP%] {\r\n  margin: 0;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\na[_ngcontent-%COMP%] {\r\n  text-decoration: none;\r\n}\r\n\r\nul[_ngcontent-%COMP%] {\r\n  margin: 0;\r\n  list-style: none;\r\n  padding: 0;\r\n}\r\n\r\n.thumbnail-view-window[_ngcontent-%COMP%]{\r\n  width: 400px;\r\n  height: 400px;\r\n}\r\n\r\n.thumbnail-grid[_ngcontent-%COMP%]{\r\n  display: flex;\r\n}\r\n\r\n.thumbnail-item[_ngcontent-%COMP%]{\r\n  height: 100%;\r\n  width: 100%;\r\n  position: relative;\r\n  cursor: pointer;\r\n}\r\n\r\nimg[_ngcontent-%COMP%]{\r\n  width: 100%;\r\n  height: 100%;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGh1bWJuYWlscy90aHVtYm5haWxzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxzQkFBc0I7RUFDdEIsaUNBQWlDO0FBQ25DOztBQUVBOzs7RUFHRSxTQUFTO0VBQ1QsWUFBWTtFQUNaLFdBQVc7QUFDYjs7QUFFQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLFNBQVM7RUFDVCxnQkFBZ0I7RUFDaEIsVUFBVTtBQUNaOztBQUNBO0VBQ0UsWUFBWTtFQUNaLGFBQWE7QUFDZjs7QUFDQTtFQUNFLGFBQWE7QUFDZjs7QUFFQTtFQUNFLFlBQVk7RUFDWixXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLGVBQWU7QUFDakI7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvdGh1bWJuYWlscy90aHVtYm5haWxzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIqIHtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIGZvbnQtZmFtaWx5OiAnUm9ib3RvJywgc2Fucy1zZXJpZjtcclxufVxyXG5cclxuaHRtbCxcclxuYm9keSxcclxuLmFwcCB7XHJcbiAgbWFyZ2luOiAwO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuYSB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcblxyXG51bCB7XHJcbiAgbWFyZ2luOiAwO1xyXG4gIGxpc3Qtc3R5bGU6IG5vbmU7XHJcbiAgcGFkZGluZzogMDtcclxufVxyXG4udGh1bWJuYWlsLXZpZXctd2luZG93e1xyXG4gIHdpZHRoOiA0MDBweDtcclxuICBoZWlnaHQ6IDQwMHB4O1xyXG59XHJcbi50aHVtYm5haWwtZ3JpZHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG59XHJcblxyXG4udGh1bWJuYWlsLWl0ZW17XHJcbiAgaGVpZ2h0OiAxMDAlO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbmltZ3tcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuIl19 */"] });
 ThumbnailsComponent.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: ThumbnailsComponent, factory: ThumbnailsComponent.ɵfac });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ThumbnailsComponent, [{
